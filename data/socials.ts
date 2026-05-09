@@ -10,7 +10,7 @@ import { SocialItem } from '@/types/social';
 export const socialItems: SocialItem[] = [
   {
     name: 'Github',
-    link: 'https://github.com/ani1609',
+    link: 'https://github.com/gitcommitankit',
     icon: GithubIcon,
   },
   {
