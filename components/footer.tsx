@@ -31,7 +31,7 @@ export default function Footer() {
         </Link>
         & Built by
         <Link
-          href='https://github.com/ani1609/portfolio-v2'
+          href='https://github.com/gitcommitankit/portfolio-v2'
           target='_blank'
           rel='noopener noreferrer'
           className='text-primary overflow-x-hidden relative after:content-[""] after:absolute after:left-1.5 after:bottom-0 after:right-0 after:h-[0.5px] after:w-[0%] after:bg-primary after:transition-all after:duration-200 after:ease-in-out hover:after:w-[96%]'
