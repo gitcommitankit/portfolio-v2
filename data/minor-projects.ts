@@ -6,7 +6,7 @@ export const minorProjects: MinorProject[] = [
     description:
       "Originally 'BridgeTogether', this chat web app enables inclusive communication with customizable settings for users with disabilities like deafness, blindness, and colorblindness.",
     techStack: ['Assembly AI API', 'React', 'Tailwind CSS', ''],
-    githubLink: 'https://github.com/ani1609/NeoChat',
+    githubLink: 'https://github.com/gitcommitankit/NeoChat',
     tagLine: 'Won Synchronicity - S1, JU',
   },
   {
@@ -21,7 +21,7 @@ export const minorProjects: MinorProject[] = [
       'React',
       'Tailwind CSS',
     ],
-    githubLink: 'https://github.com/ani1609/Spendwise',
+    githubLink: 'https://github.com/gitcommitankit/Spendwise',
     tagLine: 'KWoC 23, IIT KGP Triumph',
   },
   {
@@ -29,6 +29,6 @@ export const minorProjects: MinorProject[] = [
     description:
       'A prototype social media clone offering real-time post creation, likes, comments, and sharing features, complete with instantaneous notifications for a dynamic user experience.',
     techStack: ['React', 'Socket.io', 'Express.js', 'MongoDB'],
-    githubLink: 'https://github.com/ani1609/social-media-prototype',
+    githubLink: 'https://github.com/gitcommitankit/social-media-prototype',
   },
 ];

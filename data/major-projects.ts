@@ -20,7 +20,7 @@ export const majorProjects: MajorProject[] = [
       'TypeScript',
       'WebSockets',
     ],
-    githubLink: 'https://github.com/ani1609/four-in-a-row/',
+    githubLink: 'https://github.com/gitcommitankit/four-in-a-row/',
     deployedLink: 'https://ankit-four-in-a-row.vercel.app',
   },
   {
@@ -38,7 +38,7 @@ export const majorProjects: MajorProject[] = [
       'Node.js',
       'TypeScript',
     ],
-    githubLink: 'https://github.com/ani1609/bluedart-alerts/',
+    githubLink: 'https://github.com/gitcommitankit/bluedart-alerts/',
     deployedLink: 'https://ankit-bluedart-alerts.vercel.app',
   },
 ];
