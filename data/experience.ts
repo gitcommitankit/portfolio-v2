@@ -7,7 +7,7 @@ export const experiences: Experience[] = [
     companyNickName: 'M.it services',
     jobTitle: 'Systems Software Engineer',
     location: 'Remote',
-    date: 'Feb 2026 - Present',
+    date: 'Feb 2026 - APR 2026',
     employmentType: 'Contract',
     companyLink: 'https://m-itservices.de/',
     description: [
