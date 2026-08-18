@@ -51,7 +51,7 @@ export default function MajorProjectsItem({
 
   return (
     <>
-      {index % 2 === 0 ? (
+      {index % 2 !== 0 ? (
         <div
           id='major-project-odd'
           className='w-full h-[380px] sm:h-[350px] flex justify-end items-center relative z-[2]'
