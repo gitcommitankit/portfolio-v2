@@ -22,16 +22,28 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
   options?: UseScrollAnimationOptions
 ): RefObject<T | null> | void {
   const internalRef = useRef<T>(null);
+  const animatedElementsRef = useRef<Set<Element>>(new Set());
 
   const isTarget =
     targetOrOptions &&
     (Array.isArray(targetOrOptions) || 'current' in targetOrOptions);
 
-  const targetRefs: TargetRef[] = isTarget
+  const rawTargetRefs: TargetRef[] = isTarget
     ? Array.isArray(targetOrOptions)
       ? targetOrOptions
       : [targetOrOptions]
     : [internalRef];
+
+  // Stabilize targetRefs array reference across renders when contents are identical
+  const prevRefsRef = useRef<TargetRef[]>([]);
+  const isSameRefs =
+    prevRefsRef.current.length === rawTargetRefs.length &&
+    prevRefsRef.current.every((ref, index) => ref === rawTargetRefs[index]);
+
+  if (!isSameRefs) {
+    prevRefsRef.current = rawTargetRefs;
+  }
+  const stableTargetRefs = prevRefsRef.current;
 
   const config =
     (isTarget
@@ -62,6 +74,7 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
         if (entry.isIntersecting) {
           entry.target.classList.add(animationClass);
           if (once) {
+            animatedElementsRef.current.add(entry.target);
             observer.unobserve(entry.target);
           }
         }
@@ -70,8 +83,11 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
 
     const observedElements: Element[] = [];
 
-    targetRefs.forEach((ref) => {
+    stableTargetRefs.forEach((ref) => {
       if (ref?.current) {
+        if (once && animatedElementsRef.current.has(ref.current)) {
+          return;
+        }
         observer.observe(ref.current);
         observedElements.push(ref.current);
       }
@@ -81,7 +97,7 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
       observedElements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
     };
-  }, [threshold, rootMargin, root, animationClass, once, targetRefs]);
+  }, [threshold, rootMargin, root, animationClass, once, stableTargetRefs]);
 
   if (!isTarget) {
     return internalRef;
