@@ -28,22 +28,11 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
     targetOrOptions &&
     (Array.isArray(targetOrOptions) || 'current' in targetOrOptions);
 
-  const rawTargetRefs: TargetRef[] = isTarget
+  const targetRefs: TargetRef[] = isTarget
     ? Array.isArray(targetOrOptions)
       ? targetOrOptions
       : [targetOrOptions]
     : [internalRef];
-
-  // Stabilize targetRefs array reference across renders when contents are identical
-  const prevRefsRef = useRef<TargetRef[]>([]);
-  const isSameRefs =
-    prevRefsRef.current.length === rawTargetRefs.length &&
-    prevRefsRef.current.every((ref, index) => ref === rawTargetRefs[index]);
-
-  if (!isSameRefs) {
-    prevRefsRef.current = rawTargetRefs;
-  }
-  const stableTargetRefs = prevRefsRef.current;
 
   const config =
     (isTarget
@@ -83,7 +72,7 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
 
     const observedElements: Element[] = [];
 
-    stableTargetRefs.forEach((ref) => {
+    targetRefs.forEach((ref) => {
       if (ref?.current) {
         if (once && animatedElementsRef.current.has(ref.current)) {
           return;
@@ -97,7 +86,7 @@ export function useScrollAnimation<T extends Element = HTMLDivElement>(
       observedElements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
     };
-  }, [threshold, rootMargin, root, animationClass, once, stableTargetRefs]);
+  }, [threshold, rootMargin, root, animationClass, once]);
 
   if (!isTarget) {
     return internalRef;
