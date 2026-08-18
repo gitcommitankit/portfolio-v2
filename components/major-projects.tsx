@@ -1,37 +1,16 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import MajorProjectsItem from './major-project-item';
 import { majorProjects } from '@/data/major-projects';
 import { Section } from './ui/section';
 import { Heading, HeadingLine, HeadingMarker, HeadingText } from './ui/heading';
 
 export default function MajorProjects() {
-  const majorProjectHeadingRef = useRef(null);
+  const majorProjectHeadingRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-      }
-    }, options);
-
-    const currentMajorProjectHeadingRef = majorProjectHeadingRef.current;
-
-    if (currentMajorProjectHeadingRef)
-      observer.observe(currentMajorProjectHeadingRef);
-
-    return () => {
-      if (currentMajorProjectHeadingRef)
-        observer.unobserve(currentMajorProjectHeadingRef);
-    };
-  }, []);
+  useScrollAnimation(majorProjectHeadingRef);
 
   return (
     <Section

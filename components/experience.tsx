@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { experiences } from '@/data/experience';
 import Link from 'next/link';
 import { Experience as ExperienceType } from '@/types/experience';
@@ -8,7 +9,7 @@ import { Section } from './ui/section';
 import { Heading, HeadingLine, HeadingMarker, HeadingText } from './ui/heading';
 
 export default function Experience() {
-  const experienceHeadingRef = useRef(null);
+  const experienceHeadingRef = useRef<HTMLDivElement>(null);
   const experienceContentRef = useRef<HTMLDivElement>(null);
   const experienceDescriptionRef = useRef<HTMLDivElement>(null);
   const veticalSliderRef = useRef<HTMLDivElement>(null);
@@ -19,32 +20,7 @@ export default function Experience() {
   );
   const [selectedExperienceIndex, setSelectedExperienceIndex] = useState(0);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-slide-in');
-        }
-      });
-    }, options);
-
-    const experienceHeading = experienceHeadingRef.current;
-    const experienceContents = experienceContentRef.current;
-
-    if (experienceHeading) observer.observe(experienceHeading);
-    if (experienceContents) observer.observe(experienceContents);
-
-    return () => {
-      if (experienceHeading) observer.unobserve(experienceHeading);
-      if (experienceContents) observer.unobserve(experienceContents);
-    };
-  }, []);
+  useScrollAnimation([experienceHeadingRef, experienceContentRef]);
 
   useEffect(() => {
     const handleResize = () => {

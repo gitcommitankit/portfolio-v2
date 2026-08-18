@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import MinorProjectItem from './minor-project-item';
 import { minorProjects } from '@/data/minor-projects';
 import { Section } from './ui/section';
@@ -8,29 +9,9 @@ import { Heading, HeadingText, HeadingLine } from './ui/heading';
 
 export default function MinorProjects() {
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const minorProjectHeadingRef = useRef(null);
+  const minorProjectHeadingRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-      }
-    }, options);
-
-    const currentHeadingRef = minorProjectHeadingRef.current;
-
-    if (currentHeadingRef) observer.observe(currentHeadingRef);
-
-    return () => {
-      if (currentHeadingRef) observer.unobserve(currentHeadingRef);
-    };
-  }, []);
+  useScrollAnimation(minorProjectHeadingRef);
 
   return (
     <Section
