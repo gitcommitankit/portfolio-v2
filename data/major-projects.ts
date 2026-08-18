@@ -1,8 +1,31 @@
 import FourInARowImage from '@/public/images/four-in-a-row.webp';
 import BlueDartAlertsImage from '@/public/images/bluedart-alerts.webp';
+import AgentraxImage from '@/public/images/agentrax.webp';
 import { MajorProject } from '@/types/major-project';
 
 export const majorProjects: MajorProject[] = [
+  {
+    title: 'Agentrax',
+    tagLine: 'Cloud-Native Kubernetes Operator for AI & LLM Agents',
+    description:
+      'A Kubernetes operator for AI agent workloads featuring multi-tenant quota enforcement, Prometheus-driven canary rollouts with auto-rollback, metrics-based autoscaling, and an embedded MCP service discovery registry.',
+    image: AgentraxImage,
+    techStack: [
+      'Admission Webhooks',
+      'Canary Rollouts',
+      'CI/CD',
+      'controller-runtime',
+      'Docker',
+      'Gateway API',
+      'Go',
+      'Helm',
+      'Kubernetes (CRDs)',
+      'Model Context Protocol (MCP)',
+      'Prometheus',
+    ],
+    githubLink: 'https://github.com/gitcommitankit/agentrax',
+    deployedLink: 'https://github.com/gitcommitankit/agentrax',
+  },
   {
     title: 'Four in a Row',
     tagLine: 'Real-time Multiplayer',
