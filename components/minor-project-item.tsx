@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import {
   FolderIcon,
   GithubIcon,
@@ -17,29 +18,9 @@ interface MinorProjectItemProps {
 export default function MinorProjectItem({
   minorProject,
 }: MinorProjectItemProps) {
-  const minorProjectRef = useRef(null);
+  const minorProjectRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-      }
-    }, options);
-
-    const currentMinorProjectRef = minorProjectRef.current;
-
-    if (currentMinorProjectRef) observer.observe(currentMinorProjectRef);
-
-    return () => {
-      if (currentMinorProjectRef) observer.unobserve(currentMinorProjectRef);
-    };
-  }, []);
+  useScrollAnimation(minorProjectRef);
 
   return (
     <div

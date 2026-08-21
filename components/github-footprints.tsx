@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import useSWR from 'swr';
 import {
   CommitResponse,
@@ -33,10 +34,10 @@ import { Section } from './ui/section';
 import { Heading, HeadingLine, HeadingMarker, HeadingText } from './ui/heading';
 
 export default function GithubFootprints() {
-  const githubFootprintsHeadingRef = useRef(null);
-  const commitChartRef = useRef(null);
-  const prChartRef = useRef(null);
-  const languageChartRef = useRef(null);
+  const githubFootprintsHeadingRef = useRef<HTMLDivElement>(null);
+  const commitChartRef = useRef<HTMLDivElement>(null);
+  const prChartRef = useRef<HTMLDivElement>(null);
+  const languageChartRef = useRef<HTMLDivElement>(null);
   const years: Year[] = [2021, 2022, 2023, 2024, 2025, 2026];
   const commitMonths: (Month | 'all')[] = [
     'all',
@@ -96,38 +97,12 @@ export default function GithubFootprints() {
     fetcher
   );
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-slide-in');
-        }
-      });
-    }, options);
-
-    const githubFootprintsHeading = githubFootprintsHeadingRef.current;
-    const commitChart = commitChartRef.current;
-    const prChart = prChartRef.current;
-    const languageChart = languageChartRef.current;
-
-    if (githubFootprintsHeading) observer.observe(githubFootprintsHeading);
-    if (commitChart) observer.observe(commitChart);
-    if (prChart) observer.observe(prChart);
-    if (languageChart) observer.observe(languageChart);
-
-    return () => {
-      if (githubFootprintsHeading) observer.unobserve(githubFootprintsHeading);
-      if (commitChart) observer.unobserve(commitChart);
-      if (prChart) observer.unobserve(prChart);
-      if (languageChart) observer.unobserve(languageChart);
-    };
-  }, []);
+  useScrollAnimation([
+    githubFootprintsHeadingRef,
+    commitChartRef,
+    prChartRef,
+    languageChartRef,
+  ]);
 
   return (
     <Section

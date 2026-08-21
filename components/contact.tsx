@@ -1,34 +1,15 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { Section } from './ui/section';
 import { Heading, HeadingMarker, HeadingText } from './ui/heading';
 
 export default function Contact() {
-  const contactRef = useRef(null);
+  const contactRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.6,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-      }
-    }, options);
-
-    const currentContactRef = contactRef.current;
-
-    if (currentContactRef) observer.observe(currentContactRef);
-
-    return () => {
-      if (currentContactRef) observer.unobserve(currentContactRef);
-    };
-  }, []);
+  useScrollAnimation(contactRef, { threshold: 0.6 });
 
   return (
     <Section

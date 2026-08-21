@@ -1,33 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { Section } from './ui/section';
 
 export default function Maintenance() {
-  const maintenanceRef = useRef(null);
+  const maintenanceRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-      }
-    }, options);
-
-    const currentmaintenanceRefRef = maintenanceRef.current;
-
-    if (currentmaintenanceRefRef) observer.observe(currentmaintenanceRefRef);
-
-    return () => {
-      if (currentmaintenanceRefRef)
-        observer.unobserve(currentmaintenanceRefRef);
-    };
-  }, []);
+  useScrollAnimation(maintenanceRef);
 
   return (
     <Section

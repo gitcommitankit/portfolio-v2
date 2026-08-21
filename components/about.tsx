@@ -1,43 +1,19 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { Section } from './ui/section';
 import MyPhoto from '@/public/images/me.webp';
 import Image from 'next/image';
 import { Heading, HeadingMarker, HeadingText, HeadingLine } from './ui/heading';
 
 export default function About() {
-  const aboutHeadingRef = useRef(null);
-  const aboutContentsRef = useRef(null);
+  const aboutHeadingRef = useRef<HTMLDivElement>(null);
+  const aboutContentsRef = useRef<HTMLDivElement>(null);
   const bodytextClassName = `tracking-[0.6px] [word-spacing:0.8px] text-para text-sm sm:text-base `;
   const technologiesClassName = `font-open-sans text-para tracking-[1.6px] font-medium whitespace-nowrap text-xs before:content-["▹"] before:text-primary before:text-sm before:pr-2`;
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-slide-in');
-        }
-      });
-    }, options);
-
-    const aboutHeading = aboutHeadingRef.current;
-    const aboutContents = aboutContentsRef.current;
-
-    if (aboutHeading) observer.observe(aboutHeading);
-    if (aboutContents) observer.observe(aboutContents);
-
-    return () => {
-      if (aboutHeading) observer.unobserve(aboutHeading);
-      if (aboutContents) observer.unobserve(aboutContents);
-    };
-  }, []);
+  useScrollAnimation([aboutHeadingRef, aboutContentsRef]);
 
   return (
     <Section

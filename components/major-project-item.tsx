@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { GithubIcon, SquareArrowOutUpRightIcon } from '@/assets/icons';
 import Image from 'next/image';
 import { MajorProject } from '@/types/major-project';
@@ -16,42 +17,14 @@ export default function MajorProjectsItem({
   majorProject,
   index,
 }: MajorProjectsItemProps) {
-  const majorProjectOddRef = useRef(null);
-  const majorProjectEvenRef = useRef(null);
+  const majorProjectOddRef = useRef<HTMLDivElement>(null);
+  const majorProjectEvenRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-slide-in');
-        }
-      });
-    }, options);
-
-    const currentMajorProjectOddRef = majorProjectOddRef.current;
-    const currentMajorProjectEvenRef = majorProjectEvenRef.current;
-
-    if (currentMajorProjectOddRef) observer.observe(currentMajorProjectOddRef);
-    if (currentMajorProjectEvenRef)
-      observer.observe(currentMajorProjectEvenRef);
-
-    return () => {
-      if (currentMajorProjectOddRef)
-        observer.unobserve(currentMajorProjectOddRef);
-      if (currentMajorProjectEvenRef)
-        observer.unobserve(currentMajorProjectEvenRef);
-    };
-  }, []);
+  useScrollAnimation([majorProjectOddRef, majorProjectEvenRef]);
 
   return (
     <>
-      {index % 2 === 0 ? (
+      {index % 2 !== 0 ? (
         <div
           id='major-project-odd'
           className='w-full h-[380px] sm:h-[350px] flex justify-end items-center relative z-[2]'
