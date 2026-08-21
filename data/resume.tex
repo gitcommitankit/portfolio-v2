@@ -1,199 +1,174 @@
-\documentclass[]{deedy-resume-openfont}
+%-------------------------
+% Resume in LaTeX
+% Based on the structure of "Jake's Resume" (github.com/jakegut/resume,
+% itself based on sb2nov/resume) — MIT-licensed, single-column, ATS-friendly.
+% Self-contained: no custom .cls file, compiles with plain pdflatex.
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
- 
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
 \pagestyle{fancy}
 \fancyhf{}
- 
-\begin{document}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     LAST UPDATED DATE
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\lastupdated
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     TITLE NAME
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{Ankit Kr.}{Chowdhury}{ \urlstyle{same}\href{https://ankit-kr-chowdhury.vercel.app/}{Portfolio}\\
-\href{mailto:ankitparallax@gmail.com}{ankitparallax@gmail.com} \textbar{} \href{tel:+918371064658}{+91 8371064658}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Ensure PDF is machine readable / ATS parsable (ligatures -> unicode)
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-3pt}}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     COLUMN ONE
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
-\begin{minipage}[t]{0.33\textwidth} 
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EDUCATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-7pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.18in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
 
-\section{Education} 
+\begin{document}
 
-\subsection{UEM Kolkata}
-\descript{BTech in Computer Science}
-\location{Jun 2021 - July 2025 | Newtown, IN}
-\location {GPA: 8.83 / 10.0}
-\sectionsep
+\hypersetup{pdftitle={Ankit Kr. Chowdhury - Resume}, pdfauthor={Ankit Kr. Chowdhury}}
 
-\subsection{Lions Calcutta}
-\descript{High School Diploma}
-\location{Apr 2017 - 2021 | Rajpur, WB, IN}
-\sectionsep
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Ankit Kr. Chowdhury} \\ \vspace{3pt}
+    \small +91-8371064658 $|$
+    \href{mailto:ankitparallax@gmail.com}{\underline{ankitparallax@gmail.com}} $|$
+    \href{https://github.com/gitcommitankit}{\underline{github.com/gitcommitankit}} $|$
+    \href{https://www.linkedin.com/in/ankit-kr-chowdhury-1b1690218/}{\underline{linkedin.com/in/ankit-kr-chowdhury}} $|$
+    \href{https://leetcode.com/u/gitcommitankit/}{\underline{leetcode.com/gitcommitankit}} $|$
+    \href{https://ankit-kr-chowdhury.vercel.app/}{\underline{ankit-kr-chowdhury.vercel.app}}
+\end{center}
+\vspace{-10pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     LINKS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Engineering \& Management, Kolkata}{Jun 2021 -- Jul 2025}
+      {B.Tech, Computer Science and Engineering \textbar{} GPA: 8.83/10.0}{Newtown, India}
+  \resumeSubHeadingListEnd
 
-\section{Links} 
-Github:// \href{https://github.com/gitcommitankit}{\bf gitcommitankit} \\
-LinkedIn://  \href{https://www.linkedin.com/in/ankit-kr-chowdhury-1b1690218/}{\bf ankit-kr-chowdhury} \\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     COURSEWORK
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \section{Coursework}
-% \subsection{Undergraduate}
-% Data Structures and Algorithms \\
-% Operating Systems \\
-% Object-Oriented Programming \\
-% Design and analysis of algorithms \\
-% Machine Learning \\
-% Computer Networks \\
-% Engineering Mathematics \\
-% Database Management System \\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     SKILLS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\sectionsep
-\section{Skills}
-\subsection{Programming Languages}
-C++ \textbullet{} Go \textbullet{} JavaScript \textbullet{} SQL \textbullet{} TypeScript
-
-\vspace{10pt}
-
-\subsection{Frontend Technologies}
-Next.js \textbullet{} React \textbullet{} TailwindCSS \textbullet{} Vue.js
-
-\vspace{10pt}
-
-\subsection{Backend Technologies}
-Express.js \textbullet{} Nginx \textbullet{} Node.js \textbullet{} WebRTC \textbullet{} WebSocket
-
-\vspace{10pt}
-
-\subsection{Databases}
-Firebase \textbullet{} MongoDB \textbullet{} PostgreSQL \textbullet{} VectorDB
-
-\vspace{10pt}
-
-\subsection{Cloud Native \\ \& Kubernetes}
-CRDs \textbullet{} Docker \textbullet{} Helm \textbullet{} Kubernetes \textbullet{} Kubernetes Operators \textbullet{} Multi-Cluster Networking
-
-\vspace{10pt}
-
-\subsection{DevOps \\ \& Cloud Platforms}
-AWS \textbullet{} CI/CD \textbullet{} GCP \textbullet{} GitHub Actions
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     AWARDS
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\sectionsep
-\section{Awards}
-\subsection{Hackathons}
-\textbf{\textbullet{} \#1} \textbf{\href{https://certopus.com/c/efc67ee6e251433580e1568487bf43ba/}{Synchronicity - S1, 2024}}, JU, Salt Lake \\
-\textbf{\textbullet{} Top 10/500} \textbf{\href{https://www.hack4bengal.tech/}{Hack4Bengal 2.0, 2023}}, SNU, Newtown \\[6pt]
-\subsection{Open Source}
-\textbf{\textbullet{} Top 3/50} \textbf{\href{https://github.com/kossiitkgp/public-files/blob/master/KWoC/2023-Certificates/Mentor/ani1609.pdf}{KWOC, 2023}}, IIT Kharagpur \\
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     COLUMN TWO
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\end{minipage} 
-\hfill
-\begin{minipage}[t]{0.66\textwidth} 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EXPERIENCE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%-----------EXPERIENCE-----------
 \section{Experience}
+  \resumeSubHeadingListStart
 
-\runsubsection{\href{https://hudme.gg/}{M.it services \& systems GmbH}}
-\descript{| Systems Software Engineer}
-\location{Feb 2026 – APR 2026 | Contract | Remote}
-\begin{tightemize} \vspace{10pt}
-\item Refactored a \href{https://www.rust-lang.org/}{\textbf{Rust}} + \href{https://v2.tauri.app/}{\textbf{Tauri}} codebase, removing dead code, enforcing idiomatic patterns, and migrating all Windows bindings from \texttt{windows\_api} to the official \href{https://crates.io/crates/windows}{\texttt{windows}} crate with zero functional regressions.
-\item Enabled \textbf{cross-platform mobile builds} (iOS \& Android) with platform-isolated gateways and conditional compilation, and built a \textbf{Rust-based test harness} validating all \textbf{Tauri commands} under \textbf{20+ concurrent invocations}.
-\item Implemented \textbf{native media capture} (screen share, camera, microphone) using \href{https://developer.android.com/guide/topics/large-screens/media-projection}{\textbf{MediaProjection}} and \href{https://developer.android.com/training/camerax}{\textbf{CameraX}} on Android, and \href{https://developer.apple.com/documentation/replaykit}{\textbf{ReplayKit}} and \href{https://developer.apple.com/documentation/avfoundation}{\textbf{AVFoundation}} on iOS, with just-in-time permissions and lifecycle-aware error propagation.
-\end{tightemize}
+    \resumeSubheading
+      {Systems Software Engineer}{Feb 2026 -- Apr 2026}
+      {\href{https://www.m-itservices.de/}{M.it services \& systems GmbH}}{Remote $\cdot$ Contract}
+      \resumeItemListStart
+        \resumeItem{Refactored a production \textbf{Rust} + \textbf{Tauri} desktop codebase, removing dead code and migrating all Windows API bindings from \texttt{windows\_api} to the official \texttt{windows} crate with \textbf{zero functional regressions}.}
+        \resumeItem{Extended the application to \textbf{iOS and Android} via platform-isolated gateways and conditional compilation, shipping \textbf{native media capture} (screen share, camera, microphone) using MediaProjection/CameraX and ReplayKit/AVFoundation with lifecycle-aware capture and structured native-to-Rust error propagation.}
+      \resumeItemListEnd
 
-\sectionsep
+    \resumeSubheading
+      {Software Development Engineer}{Dec 2025 -- Jan 2026}
+      {\href{https://iocl.com/}{Indian Oil Corporation Limited (IOCL)}}{Hybrid $\cdot$ Contract}
+      \resumeItemListStart
+        \resumeItem{Designed a configuration-driven document intelligence platform with LLM-based, schema-driven extraction and \textbf{RAG} pipelines (LangChain, Pinecone) over unstructured PDFs, cutting manual audit effort by \textbf{90\%}.}
+        \resumeItem{Orchestrated asynchronous extraction and validation workflows with \textbf{RabbitMQ}, improving processing throughput \textbf{3$\times$} while producing auditable, rule-based validation reports.}
+      \resumeItemListEnd
 
-\runsubsection{\href{https://iocl.com/}{Indian Oil Corporation Limited (IOCL)}}
-\descript{| Software Development Engineer}
-\location{Dec 2025 – Jan 2026 | Contract | Hybrid}
-\begin{tightemize}
-\item Built a \textbf{config-driven document intelligence platform} for unstructured PDFs with \textbf{LLM-based schema-driven extraction and validation}, reducing manual audit effort by \textbf{90\%}.
-\item Leveraged \href{https://www.langchain.com/}{\textbf{LangChain}}, \href{https://www.pinecone.io/}{\textbf{Pinecone}}, and \href{https://www.rabbitmq.com/}{\textbf{RabbitMQ}} for \textbf{RAG pipelines}, enabling semantic, cross-entity checks and improving throughput \textbf{3×}.
-\end{tightemize}
+    \resumeSubheading
+      {Open Source Mentee -- KubeSlice (CNCF Sandbox)}{Sep 2025 -- Nov 2025}
+      {\href{https://lfx.linuxfoundation.org/tools/mentorship/}{Linux Foundation, LFX Mentorship Program}}{Remote}
+      \resumeItemListStart
+        \resumeItem{Architected and implemented \href{https://github.com/kubeslice/kubeslice-controller/pull/284}{\textbf{Dynamic IPAM}} for the \href{https://kubeslice.io/}{KubeSlice} Controller using custom \textbf{Kubernetes CRDs} and Go-based reconciliation controllers, shrinking IP address space usage by \textbf{99.22\%} with sub-1-second allocation latency and zero network performance degradation.}
+        \resumeItem{Developed 29+ IP allocation algorithms (subnet generation, conflict detection, reclamation) backed by \textbf{200+ automated tests at 92.7\% coverage}, and built production-grade \textbf{admission webhooks} enforcing CIDR and immutability constraints across 24 dedicated tests.}
+        \resumeItem{Instrumented the system with \textbf{9 Prometheus metrics} for real-time observability into allocation latency and subnet utilization, collaborating directly with CNCF maintainers on design reviews.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
-\sectionsep
-
-\runsubsection{\href{https://lfx.linuxfoundation.org/tools/mentorship/}{LFX Mentorship Program (CNCF)}}
-\descript{| Mentee}
-\location{Sep 2025 – Nov 2025 | Mentorship | Remote}
-\begin{tightemize}
-\item Architected \href{https://github.com/kubeslice/kubeslice-controller/pull/284}{\textbf{Dynamic IPAM}} for \href{https://kubeslice.io/}{\textbf{KubeSlice}} (CNCF Sandbox) using custom \textbf{Kubernetes CRDs} and Go-based controllers, achieving \textbf{99.22\% IP space savings} with \textbf{<1s allocation latency}.
-\item Developed \textbf{29+ IP allocation strategies} with \textbf{200+ automated tests} (\textbf{92.7\% coverage}), validated across multi-slice and multi-cluster deployments.
-\item Implemented \textbf{Go-based reconciliation logic} handling IP allocation lifecycles, conflict resolution, and safe reclamation under concurrent updates.
-\item Implemented production-grade \textbf{admission webhooks} and \textbf{Prometheus-based observability} for allocation latency, utilization, and subnet availability.
-\end{tightemize}
-
-\sectionsep
-
-\runsubsection{\href{https://www.neuroute.ai/}{Neuroute AI}}
-\descript{| Software Development Engineer}
-\location{Dec 2024 – May 2025 | Intern | Remote}
-\begin{tightemize}
-\item Built an \textbf{LLM-powered clinical trial brainstorming tool} on top of \href{https://clinicaltrials.gov/data-api/api}{\textbf{ClinicalTrials.gov APIs}} (\textbf{529K+ records}) using \href{https://www.pinecone.io/}{\textbf{Pinecone Assistant}}, reducing research time by \textbf{40\%} and improving accuracy by \textbf{45\%}.
-\item Built a \textbf{real-time RBAC-enabled dashboard}, improving monitoring efficiency by \textbf{40\%} and data visualization by \textbf{60\%}.
-\end{tightemize}
-
-\sectionsep
-
+%-----------PROJECTS-----------
 \section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Agentrax} $\vert$ \emph{Go, Kubernetes (CRDs), controller-runtime, Prometheus, Helm, MCP}}
+      {\href{https://github.com/gitcommitankit/agentrax}{GitHub} % $\;\vert\;$ \href{https://youtu.be/...}{Demo}
+      }
+      \resumeItemListStart
+        \resumeItem{Engineered a \textbf{Kubernetes operator} in Go for AI agent workloads, implementing custom CRDs, admission webhooks, and \textbf{multi-tenant quota enforcement} to isolate and govern agent resource usage.}
+        \resumeItem{Configured \textbf{Prometheus}-driven canary rollouts with automatic rollback, metrics-based autoscaling, and an embedded \textbf{MCP (Model Context Protocol)} service-discovery registry for agent tool discovery.}
+      \resumeItemListEnd
 
-\runsubsection{\href{https://github.com/gitcommitankit/four-in-a-row/}{Four in a Row}}
-\descript{— Real-Time Multiplayer System}
-\vspace{2pt}
-\textbf{Technologies:} \href{https://go.dev/}{Go}, \href{https://kafka.apache.org/}{Kafka}, \href{https://redis.io/}{Redis}, \href{https://www.postgresql.org/}{PostgreSQL}, \href{https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API}{WebSockets}, \href{https://www.docker.com/}{Docker}, {CI/CD}
-\begin{tightemize}
-\vspace{4pt}
-\item Built a \textbf{real-time multiplayer game server} with matchmaking, competitive bot fallback, and turn-based play under concurrency.
-\item Implemented \textbf{stateful game orchestration} with reconnect handling, forfeits on timeout, persistent storage, and decoupled analytics.
-\item Automated \textbf{CI/CD-based container deployment}, publishing Docker images on GitHub push and deploying to a \href{https://www.digitalocean.com/products/droplets}{DigitalOcean} droplet.
+    \resumeProjectHeading
+      {\textbf{Four in a Row} $\vert$ \emph{Go, Kafka, Redis, PostgreSQL, WebSockets, Docker}}
+      {\href{https://github.com/gitcommitankit/four-in-a-row/}{GitHub} % $\;\vert\;$ \href{https://ankit-four-in-a-row.vercel.app}{Live}
+      }
+      \resumeItemListStart
+        \resumeItem{Built a \textbf{real-time multiplayer} game server in Go with WebSocket-based matchmaking, turn-based play under concurrency, and an \textbf{automatic competitive bot fallback} when no opponent is found.}
+        \resumeItem{Implemented reconnection handling, timeout forfeits, and a persistent global leaderboard using PostgreSQL, Redis, and \textbf{Kafka} for decoupled analytics, deployed via a Dockerized \textbf{CI/CD} pipeline to a DigitalOcean droplet.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
-\end{tightemize}
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.0in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Go, Rust, TypeScript/JavaScript, C++, SQL} \\
+     \textbf{Cloud Native \& DevOps}{: Kubernetes (CRDs, Operators, Admission Webhooks), Docker, Helm, Prometheus, AWS, GCP, CI/CD} \\
+     \textbf{Backend, AI/LLM \& Data}{: Node.js, Express.js, WebSockets, RabbitMQ, Kafka, LangChain, Pinecone, RAG, PostgreSQL, MongoDB, Redis} \\
+     \textbf{Frontend}{: Next.js, React, TailwindCSS}
+    }}
+ \end{itemize}
+ \vspace{-8pt}
 
-\end{minipage} 
+%-----------AWARDS-----------
+\section{Awards}
+ \begin{itemize}[leftmargin=0.0in, label={}]
+    \small{\item{
+     \href{https://certopus.com/c/efc67ee6e251433580e1568487bf43ba/}{\textbf{1st Place}, Synchronicity Hackathon 2024} (Jadavpur University) $\;\vert\;$  
+     \href{https://github.com/kossiitkgp/public-files/blob/master/KWoC/2023-Certificates/Mentor/ani1609.pdf}{\textbf{Top 3/50}, KWoC 2023} (IIT Kharagpur) $\;\vert\;$
+     \href{https://www.hack4bengal.tech/}{\textbf{Top 10/500}, Hack4Bengal 2.0 2023} (SNU)
+    }}
+ \end{itemize}
+
 \end{document}
